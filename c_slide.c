@@ -1,23 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   c_slide.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 16:47:02 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/03 16:49:57 by cfeliz-r         ###   ########.fr       */
+/*   Created: 2024/06/05 12:25:20 by cfeliz-r          #+#    #+#             */
+/*   Updated: 2024/06/05 13:09:11 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	slideup(long **list, long size)
 {
-	while (*s1 && *s1 == *s2)
+	long	a;
+
+	a = 1;
+	if (size > 1)
 	{
-		s1++;
-		s2++;
+		while (a < size && list[0][a] != MT)
+		{
+			list[0][a - 1] = list[0][a];
+			a++;
+		}
+		list[0][a - 1] = MT;
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
+
+void	slidedwn(long **list, long size)
+{
+	long	a;
+
+	a = size - 1;
+	if (size > 0)
+	{
+		while (a > 0)
+		{
+			list[0][a] = list[0][a - 1];
+			a--;
+		}
+		list[0][0] = MT;
+	}
 }

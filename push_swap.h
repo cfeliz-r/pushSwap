@@ -5,64 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 14:26:46 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/03 15:47:04 by cfeliz-r         ###   ########.fr       */
+/*   Created: 2024/06/04 14:45:40 by cfeliz-r          #+#    #+#             */
+/*   Updated: 2024/06/05 13:54:45 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "libft/libft.h"
+# include <stdio.h>
+# include <string.h>
 
-// Stack
-typedef struct s_list
+# define MT	99999999999
+
+typedef struct s_towers
 {
-	int				value;
-	int				index;
-	struct s_list	*next;
-}				t_list;
+	long	*a;
+	long	*b;
+	long	*corr;
+	long	size;
+	char	*log;
+	long	div;
+}					t_towers;
 
-// Util functions
-t_list	*ft_lstnew(int value);
-t_list	*ft_lstlast(t_list *head);
-void	ft_lstadd_front(t_list **stack, t_list *new);
-void	ft_lstadd_back(t_list **stack, t_list *new);
-void	printList(t_list *head);
-int		ft_lstsize(t_list *head);
-
-
-void	ft_error(char *msg);
-void	ft_check_args(int argc, char **argv);
-int		is_sorted(t_list **stack);
-int		get_distance(t_list **stack, int index);
-void	make_top(t_list **stack, int distance);
-void	free_stack(t_list **stack);
-void	ft_free(char **str);
-
-// Algorithm utils
-void	radix_sort(t_list **stack_a, t_list **stack_b);
-void	simple_sort(t_list **stack_a, t_list **stack_b);
-void	index_stack(t_list **stack);
-void	sort_5(t_list **stack_a, t_list **stack_b);
-
-// Instruction functions
-int		swap(t_list **stack);
-int		push(t_list **stack_to, t_list **stack_from);
-int		rotate(t_list **stack);
-int		reverseRotate(t_list **stack);
-
-int		sa(t_list **stack_a);
-int		sb(t_list **stack_b);
-int		ss(t_list **stack_a, t_list **stack_b);
-int		pa(t_list **stack_a, t_list **stack_b);
-int		pb(t_list **stack_b, t_list **stack_a);
-int		ra(t_list **stack_a);
-int		rb(t_list **stack_b);
-int		rr(t_list **stack_a, t_list **stack_b);
-int		rra(t_list **stack_a);
-int		rrb(t_list **stack_b);
-int		rrr(t_list **stack_a, t_list **stack_b);
+int			main(int argc, char **argv);
+char		*joinparams(int agc, char **agv);
+t_towers	organizestruct(int agc, char **agv);
+void		docorrectorder(long *a, long **corr, long size);
+int			checkorder(long *a, long size);
+void		sx(long **list, long size);
+void		px(long **dep, long **arr, long size);
+void		rx(long **list, long size);
+void		rrx(long **list, long size);
+t_towers	chunksort(t_towers tower);
+t_towers	returntoa(t_towers	tower, long *min, long *max);
+void		addlog(char **log, char *a);
+void		printlog(char *log);
+void		improvelog(char **log);
+int			countlog(char *log);
+char		*twonums(long *list);
+char		*threenums(long *list);
+t_towers	bubblesort(t_towers tower);
+t_towers	fivenums(t_towers tower);
+void		slideup(long **list, long size);
+void		slidedwn(long **list, long size);
+void		errmsg(void);
 
 #endif
-

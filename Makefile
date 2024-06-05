@@ -5,71 +5,46 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/31 09:51:30 by cfeliz-r          #+#    #+#              #
-#    Updated: 2024/06/03 16:52:34 by cfeliz-r         ###   ########.fr        #
+#    Created: 2024/06/04 14:43:21 by cfeliz-r          #+#    #+#              #
+#    Updated: 2024/06/05 13:17:48 by cfeliz-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= ft_atoi.c \
-		  ft_bzero.c \
-		  ft_calloc.c \
-		  ft_isalnum.c \
-		  ft_isalpha.c \
-		  ft_isascii.c \
-		  ft_isdigit.c \
-		  ft_isprint.c \
-		  ft_itoa.c \
-		  ft_memchr.c \
-		  ft_memcmp.c \
-		  ft_memcpy.c \
-		  ft_memmove.c \
-		  ft_memset.c \
-		  ft_putchar_fd.c \
-		  ft_putendl_fd.c \
-		  ft_putnbr_fd.c \
-		  ft_putstr_fd.c \
-		  ft_split.c \
-		  ft_strchr.c \
-		  ft_strdup.c \
-		  ft_striteri.c \
-		  ft_strjoin.c \
-		  ft_strlcat.c \
-		  ft_strlcpy.c \
-		  ft_strlen.c \
-		  ft_strmapi.c \
-		  ft_strncmp.c \
-		  ft_strcmp.c \
-		  ft_strnstr.c \
-		  ft_strrchr.c \
-		  ft_strtrim.c \
-		  ft_substr.c \
-		  ft_tolower.c \
-		  ft_toupper.c \
-		  ft_printf/ft_printf.c \
-		  ft_printf/ft_number.c \
-		  ft_printf/ft_words.c \
-		  get_next_line/get_next_line.c
+SRCS	=	push_swap.c \
+			cksort.c \
+			cksort_return.c	\
+			line_commands.c	\
+			c_slide.c	\
+			precaution.c \
+			small_nums.c \
+			inputs.c \
+			join_params.c \
+			management.c \
 
-
-OBJS		= ${SRCS:.c=.o}
-NAME		= libft.a
-CC		= gcc
-CFLAGS		= -Wall -Wextra -Werror
-
-%.o: %.c libft.h
-		${CC} ${CFLAGS} -I. -c $< -o $@
+OBJS = ${SRCS:.c=.o}
+NAME = push_swap
+LIBFT = libft.a
+LIBFT_PATH = ./libft/
+CC = gcc
+RM = rm -f
+CFLAGS = -Wall -Werror -Wextra
 
 all:		${NAME}
+${NAME}:	${OBJS} ${LIBFT_PATH}${LIBFT}
+			${CC} ${CFLAGS} ${OBJS} ${LIBFT_PATH}${LIBFT} -o ${NAME}
 
-$(NAME):	${OBJS} libft.h
-		ar rcs ${NAME} ${OBJS}
+${LIBFT_PATH}${LIBFT}:	
+			make -C ${LIBFT_PATH}
 
 clean:
-		rm -f ${OBJS} ${OBJS_BONUS}
+	@${RM} ${OBJS}
+	@make clean -C ${LIBFT_PATH}
+	@echo ".o's are no more!"
 
 fclean:		clean
-		rm -f ${NAME}
+	@${RM} ${NAME} ${LIBFT_PATH}${LIBFT}
+	@echo "(including .a's)"
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+.PHONY: all clean fclean re
