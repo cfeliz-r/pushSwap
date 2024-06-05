@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:45:40 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 13:54:45 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:41:26 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdio.h>
 # include <string.h>
 
-# define MT	99999999999
+//# define MT	99999999999
+# define MT	2147483648
 
 typedef struct s_towers
 {
