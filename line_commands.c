@@ -6,52 +6,36 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:25:07 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 13:55:26 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:25:19 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sx(long **list, long size)
+void	swap_top_two(long **stack, long size)
 {
 	long	aux;
 
 	aux = 0;
 	if (size >= 2)
 	{
-		aux = list[0][0];
-		list[0][0] = list[0][1];
-		list[0][1] = aux;
+		aux = stack[0][0];
+		stack[0][0] = stack[0][1];
+		stack[0][1] = aux;
 	}
 }
 
-void	px(long **dep, long **arr, long size)
+void	push_to_other_stack(long **src, long **dest, long size)
 {
-	if (arr[0][size - 1] == MT && dep[0][0] != MT)
+	if (dest[0][size - 1] == MT && src[0][0] != MT)
 	{
-		slidedwn(arr, size);
-		arr[0][0] = dep[0][0];
-		slideup(dep, size);
+		shift_down(dest, size);
+		dest[0][0] = src[0][0];
+		shift_up(src, size);
 	}
 }
 
-void	rx(long **list, long size)
-{
-	long	aux;
-	long	a;
-
-	a = 0;
-	if (size >= 2)
-	{
-		aux = list[0][0];
-		slideup(list, size);
-		while (list[0][a] != MT && a < size)
-			a++;
-		list[0][a] = aux;
-	}
-}
-
-void	rrx(long **list, long size)
+void	rotate_up(long **stack, long size)
 {
 	long	aux;
 	long	a;
@@ -59,13 +43,29 @@ void	rrx(long **list, long size)
 	a = 0;
 	if (size >= 2)
 	{
-		while (a + 1 < size && (*list)[a] != MT)
+		aux = stack[0][0];
+		shift_up(stack, size);
+		while (stack[0][a] != MT && a < size)
 			a++;
-		if ((*list)[a] == MT)
+		stack[0][a] = aux;
+	}
+}
+
+void	rotate_down(long **stack, long size)
+{
+	long	aux;
+	long	a;
+
+	a = 0;
+	if (size >= 2)
+	{
+		while (a + 1 < size && (*stack)[a] != MT)
+			a++;
+		if ((*stack)[a] == MT)
 			a--;
-		aux = list[0][a];
-		list[0][a] = MT;
-		slidedwn(list, size);
-		list[0][0] = aux;
+		aux = stack[0][a];
+		stack[0][a] = MT;
+		shift_down(stack, size);
+		stack[0][0] = aux;
 	}
 }

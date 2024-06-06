@@ -6,13 +6,13 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:25:20 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 13:09:11 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:11:57 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	slideup(long **list, long size)
+void	shift_up(long **list, long size)
 {
 	long	a;
 
@@ -28,7 +28,7 @@ void	slideup(long **list, long size)
 	}
 }
 
-void	slidedwn(long **list, long size)
+void	shift_down(long **list, long size)
 {
 	long	a;
 

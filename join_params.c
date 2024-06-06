@@ -6,42 +6,42 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:22 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 13:55:32 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:50:58 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	*joinstr(char *frst, char *scnd)
+static char	*join_str(char *left, char *right)
 {
 	char	*res;
 	int		len;
 	int		a;
 	int		b;
 
-	len = ft_strlen(frst) + ft_strlen(scnd) + 1;
+	len = ft_strlen(left) + ft_strlen(right) + 1;
 	res = malloc(len + 1);
 	if (!res)
 		return (NULL);
 	a = 0;
 	b = 0;
-	while (frst[a] && frst)
+	while (left[a] && left)
 	{
-		res[a] = frst[a];
+		res[a] = left[a];
 		a++;
 	}
 	res[a] = ' ';
-	free (frst);
-	while (scnd[b])
+	free (left);
+	while (right[b])
 	{
-		res[a + b + 1] = scnd[b];
+		res[a + b + 1] = right[b];
 		b++;
 	}
 	res[len] = '\0';
 	return (res);
 }
 
-char	*joinparams(int agc, char **agv)
+char	*join_params(int agc, char **agv)
 {
 	int		a;
 	char	*res;
@@ -52,7 +52,7 @@ char	*joinparams(int agc, char **agv)
 	res[1] = 0;
 	while (agc > a)
 	{
-		res = joinstr(res, agv[a]);
+		res = join_str(res, agv[a]);
 		a++;
 	}
 	return (res);

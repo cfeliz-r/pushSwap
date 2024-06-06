@@ -6,13 +6,13 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:13 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 21:37:03 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:28:47 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	numsinrange(long *list, long sol, long max, long min)
+static int	numbers_range(long *list, long sol, long max, long min)
 {
 	long	a;
 
@@ -26,45 +26,25 @@ static int	numsinrange(long *list, long sol, long max, long min)
 	return (0);
 }
 
-/*static t_towers	movetob(t_towers tower, long min, long max)
+static t_towers	move_to_b(t_towers tower, long min, long max)
 {
-	while (numsinrange(tower.a, tower.size, max, min))
+	while (numbers_range(tower.a, tower.size, max, min))
 	{
 		if (tower.a[0] >= min && tower.a[0] <= max)
 		{
-			px(&tower.a, &tower.b, tower.size);
-			addlog(&tower.log, "pb");
+			push_to_other_stack(&tower.a, &tower.b, tower.size);
+			append_log(&tower.log, "pb");
 		}
 		else
 		{
-			rx(&tower.a, tower.size);
-			addlog(&tower.log, "ra");
-		}
+			rotate_up(&tower.a, tower.size);
+			append_log(&tower.log, "ra");
+		}	
 	}
 	return (tower);
-}*/
-
-static t_towers movetob(t_towers tower, long min, long max)
-{
-    while (numsinrange(tower.a, tower.size, max, min))
-    {
-        if (tower.a[0] >= min && tower.a[0] <= max)
-        {
-            // Mover el primer elemento de A a B
-            px(&tower.a, &tower.b, tower.size);
-            addlog(&tower.log, "pb");
-        }
-        else
-        {
-            // Rotar pila A si el primer elemento no está en el rango
-            rx(&tower.a, tower.size);
-            addlog(&tower.log, "ra");
-        }    
-    }
-    return (tower);
 }
 
-/*t_towers	chunksort(t_towers tower)
+t_towers	c_sort(t_towers tower)
 {
 	long	amogr;
 	long	round;
@@ -80,48 +60,13 @@ static t_towers movetob(t_towers tower, long min, long max)
 		else
 			max = &tower.corr[(tower.size / amogr) * round];
 		min = &tower.corr[(tower.size / amogr) * (--round)];
-		tower = movetob(tower, *min, *max);
-		tower = returntoa(tower, min, max);
+		tower = move_to_b(tower, *min, *max);
+		tower = move_back_to_a(tower, min, max);
 	}
 	while (tower.a[round] != tower.corr[0])
 	{
-		rrx(&(tower.a), tower.size);
-		addlog(&tower.log, "Ra");
+		rotate_down(&(tower.a), tower.size);
+		append_log(&tower.log, "Ra");
 	}
 	return (tower);
-}*/
-
-t_towers chunksort(t_towers tower)
-{
-    long amogr;
-    long round;
-    long *max;
-    long *min;
-
-    // Ajuste del tamaño de chunk para optimización
-    amogr = (tower.size / (long)tower.div) + !!(tower.size % (long)tower.div);
-    round = amogr;
-
-    while (round > 0)
-    {
-        if (round == amogr)
-            max = &tower.corr[tower.size - 1];
-        else
-            max = &tower.corr[(tower.size / amogr) * round];
-        min = &tower.corr[(tower.size / amogr) * (--round)];
-
-        // Mover elementos dentro del rango actual a la pila B
-        tower = movetob(tower, *min, *max);
-        // Devolver elementos a la pila A en el orden correcto
-        tower = returntoa(tower, min, max);
-    }
-    
-    // Alinear pila A con el elemento más pequeño en la posición correcta
-    while (tower.a[0] != tower.corr[0])
-    {
-        rrx(&(tower.a), tower.size);
-        addlog(&tower.log, "rra");
-    }
-    
-    return (tower);
 }

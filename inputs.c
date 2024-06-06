@@ -6,13 +6,13 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:07 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 12:26:10 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:47:24 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long	countandcheckbs(char *str, long n)
+static long	count_and_checkbs(char *str, long n)
 {
 	long		a;
 
@@ -29,17 +29,17 @@ static long	countandcheckbs(char *str, long n)
 				a++;
 			n++;
 			if (str[a] != ' ' && str[a])
-				errmsg();
+				print_error();
 		}
 		else if (str[a])
-			errmsg();
+			print_error();
 		while (str[a] == ' ' && str[a])
 			a++;
 	}
 	return (n);
 }
 
-static t_towers	reservememory(long n)
+static t_towers	reserve_memory(long n)
 {
 	long		a;
 	t_towers	tower;
@@ -61,7 +61,7 @@ static t_towers	reservememory(long n)
 	return (tower);
 }
 
-static t_towers	chartolong(t_towers tower, char *str, long index)
+static t_towers	char_to_long(t_towers tower, char *str, long index)
 {
 	long	n;
 	int		a;
@@ -82,14 +82,14 @@ static t_towers	chartolong(t_towers tower, char *str, long index)
 		{
 			n = n * 10 + str[a++] - '0';
 			if (n > (long)2147483647 + (long)neg)
-				errmsg();
+				print_error();
 		}
 		tower.a[index++] = n * ((neg * -2) + 1);
 	}
 	return (tower);
 }
 
-void	checkfordupes(long *list, long size)
+static void	check_for_dupes(long *list, long size)
 {
 	long	a;
 	long	b;
@@ -102,14 +102,14 @@ void	checkfordupes(long *list, long size)
 		while (b < size)
 		{
 			if (list[a] == list[b])
-				errmsg();
+				print_error();
 			b++;
 		}
 		a++;
 	}
 }
 
-t_towers	organizestruct(int agc, char **agv)
+t_towers	initialize_struct(int agc, char **agv)
 {
 	char		*str;
 	t_towers	tower;
@@ -117,14 +117,14 @@ t_towers	organizestruct(int agc, char **agv)
 
 	len = 0;
 	if (agc < 2)
-		errmsg();
-	str = joinparams(agc, agv);
-	len = countandcheckbs(str, 0);
+		print_error();
+	str = join_params(agc, agv);
+	len = count_and_checkbs(str, 0);
 	if (!len)
-		errmsg();
-	tower = reservememory(len);
-	tower = chartolong(tower, str, 0);
-	checkfordupes(tower.a, tower.size);
+		print_error();
+	tower = reserve_memory(len);
+	tower = char_to_long(tower, str, 0);
+	check_for_dupes(tower.a, tower.size);
 	tower.log = NULL;
 	tower.div = 0;
 	free (str);

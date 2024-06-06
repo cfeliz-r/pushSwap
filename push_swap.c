@@ -6,20 +6,19 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:51 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 13:54:50 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:18:26 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	errmsg(void)
+void	print_error(void)
 {
-	write(1, "Error ", 6);
-	write(1, "\n", 1);
+	ft_printf("Error\n");
 	exit(0);
 }
 
-static void	freestuff(t_towers *tower)
+static void	free_stuff(t_towers *tower)
 {
 	free((*tower).a);
 	free((*tower).b);
@@ -27,7 +26,7 @@ static void	freestuff(t_towers *tower)
 	free((*tower).log);
 }
 
-static int	divmorecases(long size)
+static int	div_more_cases(long size)
 {
 	if (size > 2000)
 		return (500);
@@ -51,24 +50,24 @@ int	main(int argc, char **argv)
 {
 	t_towers	tower;
 
-	tower = organizestruct(argc, argv);
-	if (checkorder(tower.a, tower.size))
+	tower = initialize_struct(argc, argv);
+	if (is_ordered(tower.a, tower.size))
 		return (0);
-	docorrectorder(tower.a, &tower.corr, tower.size);
+	correct_order(tower.a, &tower.corr, tower.size);
 	if (tower.size == 2)
-		tower.log = twonums(tower.a);
+		tower.log = sort_two_numbers(tower.a);
 	else if (tower.size == 3)
-		tower.log = threenums(tower.a);
+		tower.log = sort_three_numbers(tower.a);
 	else if (tower.size == 5)
-		tower = fivenums(tower);
+		tower = sort_five_numbers(tower);
 	else if (tower.size < 20)
-		tower = bubblesort(tower);
+		tower = bubble_sort(tower);
 	else
-		tower.div = divmorecases(tower.size);
+		tower.div = div_more_cases(tower.size);
 	if (tower.div != 0)
-		tower = chunksort(tower);
-	improvelog(&tower.log);
-	printlog(tower.log);
-	freestuff(&tower);
+		tower = c_sort(tower);
+	optimize_log(&tower.log);
+	display_log(tower.log);
+	free_stuff(&tower);
 	return (0);
 }

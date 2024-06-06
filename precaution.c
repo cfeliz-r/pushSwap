@@ -6,13 +6,13 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:25:31 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/05 13:54:58 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:55:04 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	docorrectorder(long *a, long **corr, long size)
+void	correct_order(long *array, long **correct, long size)
 {
 	long	b;
 	long	c;
@@ -27,26 +27,26 @@ void	docorrectorder(long *a, long **corr, long size)
 		small = MT;
 		while (c < size)
 		{
-			if (a[c] < small && a[c] > prev)
-				small = a[c];
+			if (array[c] < small && array[c] > prev)
+				small = array[c];
 			c++;
 		}
-		corr[0][b] = small;
+		correct[0][b] = small;
 		prev = small;
 		b++;
 	}
 }
 
-int	checkorder(long *a, long size)
+int	is_ordered(long *array, long size)
 {
 	long	b;
 
 	b = 1;
-	if (a[size - 1] == MT)
+	if (array[size - 1] == MT)
 		return (0);
 	while (b < size)
 	{
-		if (a[b] < a[b - 1])
+		if (array[b] < array[b - 1])
 			return (0);
 		b++;
 	}
