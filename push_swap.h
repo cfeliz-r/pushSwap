@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:45:40 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/06 20:36:50 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/06 21:13:22 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ t_towers    sort_five_numbers(t_towers towers);
 void        shift_up(long **list, long size);
 void        shift_down(long **list, long size);
 void        print_error(void);
+int			count_rotations(long *list, int target);
+t_towers	k_sort1(t_towers tower);
+t_towers	k_sort2(t_towers tower);
 
 #endif

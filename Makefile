@@ -6,7 +6,7 @@
 #    By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:43:21 by cfeliz-r          #+#    #+#              #
-#    Updated: 2024/06/06 16:33:37 by cfeliz-r         ###   ########.fr        #
+#    Updated: 2024/06/07 00:30:39 by cfeliz-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ SRCS	=	push_swap.c \
 			small_nums.c \
 			inputs.c \
 			join_params.c \
-			management.c \
-
+			management.c
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap
 LIBFT = libft.a
