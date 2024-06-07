@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <cfeliz-r@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 10:29:19 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/06 21:12:09 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/08 01:06:46 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}t_list;
+}	t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

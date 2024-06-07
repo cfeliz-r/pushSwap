@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:07 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/06 14:47:24 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/08 00:51:15 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static long	count_and_checkbs(char *str, long n)
 				a++;
 			n++;
 			if (str[a] != ' ' && str[a])
-				print_error();
+				print_error(str, NULL);
 		}
 		else if (str[a])
-			print_error();
+			print_error(str, NULL);
 		while (str[a] == ' ' && str[a])
 			a++;
 	}
@@ -50,7 +50,7 @@ static t_towers	reserve_memory(long n)
 	tower.b = malloc(sizeof(long) * n);
 	tower.corr = malloc(sizeof(long) * n);
 	if (!tower.a || !tower.b || !tower.corr)
-		exit(0);
+		print_error(NULL, &tower);
 	while (a < n)
 	{
 		tower.a[a] = MT;
@@ -82,7 +82,7 @@ static t_towers	char_to_long(t_towers tower, char *str, long index)
 		{
 			n = n * 10 + str[a++] - '0';
 			if (n > (long)2147483647 + (long)neg)
-				print_error();
+				print_error(str, &tower);
 		}
 		tower.a[index++] = n * ((neg * -2) + 1);
 	}
@@ -102,7 +102,7 @@ static void	check_for_dupes(long *list, long size)
 		while (b < size)
 		{
 			if (list[a] == list[b])
-				print_error();
+				print_error(NULL, NULL);
 			b++;
 		}
 		a++;
@@ -117,11 +117,11 @@ t_towers	initialize_struct(int agc, char **agv)
 
 	len = 0;
 	if (agc < 2)
-		print_error();
+		print_error(NULL, NULL);
 	str = join_params(agc, agv);
 	len = count_and_checkbs(str, 0);
 	if (!len)
-		print_error();
+		print_error(str, NULL);
 	tower = reserve_memory(len);
 	tower = char_to_long(tower, str, 0);
 	check_for_dupes(tower.a, tower.size);

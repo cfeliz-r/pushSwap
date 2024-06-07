@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:24:13 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/06 16:28:47 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/08 00:59:51 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_towers	move_to_b(t_towers tower, long min, long max)
 		{
 			rotate_up(&tower.a, tower.size);
 			append_log(&tower.log, "ra");
-		}	
+		}
 	}
 	return (tower);
 }
