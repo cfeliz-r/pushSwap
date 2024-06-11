@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:51 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/08 18:11:44 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:08:39 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ void	print_error(char *str, t_towers *tower)
 {
 	if (str)
 		free(str);
+	if (tower)
+		free_stuff(tower);
+	ft_printf("Error\n");
+	exit(0);
+}
+
+void	free_stuff(t_towers *tower)
+{
 	if (tower)
 	{
 		if (tower-> stk_a)
@@ -27,16 +35,6 @@ void	print_error(char *str, t_towers *tower)
 		if (tower-> log)
 			free(tower-> log);
 	}
-	ft_printf("Error\n");
-	exit(0);
-}
-
-static void	free_stuff(t_towers *tower)
-{
-	free((*tower).stk_a);
-	free((*tower).stk_b);
-	free((*tower).corr);
-	free((*tower).log);
 }
 
 static int	div_more_cases(int size)
@@ -44,7 +42,7 @@ static int	div_more_cases(int size)
 	if (size == 500)
 		return (85);
 	else if (size == 100)
-		return (40);
+		return (35);
 	else if (size < 20)
 		return (5);
 	else

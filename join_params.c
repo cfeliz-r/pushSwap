@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:22 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/06 14:50:58 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:43:00 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*join_str(char *left, char *right)
 		return (NULL);
 	a = 0;
 	b = 0;
-	while (left[a] && left)
+	while (left[a])
 	{
 		res[a] = left[a];
 		a++;

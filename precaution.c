@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:25:31 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/08 16:15:01 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:18:25 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	is_ordered(int *array, int size)
 	int		b;
 
 	b = 1;
-	if (array[size - 1] == INT_MAX)
-		return (0);
 	while (b < size)
 	{
 		if (array[b] < array[b - 1])

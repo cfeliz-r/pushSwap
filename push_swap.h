@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:45:40 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/08 18:12:13 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:04:07 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ void		shift_up(int **list, int size);
 void		shift_down(int **list, int size);
 void		print_error(char *str, t_towers *tower);
 int			count_rotations(int *list, int target);
+void		free_stuff(t_towers *tower);
+int			try_combine_actions(char **log, char *action, char *last_action);
+void		append_action_to_log(char **log, char *action);
 
 #endif

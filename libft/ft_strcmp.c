@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_slide.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 12:25:20 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/11 16:07:20 by cfeliz-r         ###   ########.fr       */
+/*   Created: 2024/06/11 16:54:56 by cfeliz-r          #+#    #+#             */
+/*   Updated: 2024/06/11 16:55:50 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	shift_up(int **list, int size)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int		a;
+	int	i;
 
-	a = 1;
-	if (size > 1)
-	{
-		while (a < size && list[0][a] != INT_MAX)
-		{
-			list[0][a - 1] = list[0][a];
-			a++;
-		}
-		list[0][a - 1] = INT_MAX;
-	}
-}
-
-void	shift_down(int **list, int size)
-{
-	int		a;
-
-	a = size - 1;
-	if (size > 0)
-	{
-		while (a > 0)
-		{
-			list[0][a] = list[0][a - 1];
-			a--;
-		}
-		list[0][0] = INT_MAX;
-	}
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
 }

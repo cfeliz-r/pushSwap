@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:07 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/08 17:57:36 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:03:34 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static t_towers	reserve_memory(int n)
 	tower.stk_b = malloc(sizeof(int) * n);
 	tower.corr = malloc(sizeof(int) * n);
 	if (!tower.stk_a || !tower.stk_b || !tower.corr)
-		exit(0);
+		print_error(NULL, &tower);
 	while (i < n)
 	{
 		tower.stk_a[i] = INT_MAX;
@@ -89,7 +89,7 @@ static t_towers	char_to_int(t_towers tower, char *str, int index)
 	return (tower);
 }
 
-static void	check_for_duplicated(int *list, int size)
+static void	check_for_duplicates(int *list, int size)
 {
 	int		i;
 	int		j;
@@ -120,13 +120,11 @@ t_towers	initialize_struct(int agc, char **agv)
 		exit(0);
 	str = join_params(agc, agv);
 	len = count_and_checkbs(str, 0);
-	if (!len)
-		print_error(str, NULL);
 	tower = reserve_memory(len);
 	tower = char_to_int(tower, str, 0);
-	check_for_duplicated(tower.stk_a, tower.size);
+	check_for_duplicates(tower.stk_a, tower.size);
 	tower.log = NULL;
 	tower.div = 0;
-	free (str);
+	free(str);
 	return (tower);
 }

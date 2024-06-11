@@ -6,20 +6,21 @@
 #    By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:43:21 by cfeliz-r          #+#    #+#              #
-#    Updated: 2024/06/07 00:30:39 by cfeliz-r         ###   ########.fr        #
+#    Updated: 2024/06/11 16:53:10 by cfeliz-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	push_swap.c \
-			cksort.c \
-			cksort_return.c	\
+			c_sort.c \
+			c_sort_return.c	\
 			line_commands.c	\
 			c_slide.c	\
 			precaution.c \
 			small_nums.c \
 			inputs.c \
 			join_params.c \
-			management.c
+			management.c \
+			management2.c
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap
 LIBFT = libft.a

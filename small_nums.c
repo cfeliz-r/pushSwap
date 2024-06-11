@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:25:47 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/08 17:56:18 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:05:10 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*sort_two_numbers(int *list)
 	log = NULL;
 	if (list[0] > list[1])
 		append_log(&log, "sa");
-	else
-		append_log(&log, "  ");
 	return (log);
 }
 
