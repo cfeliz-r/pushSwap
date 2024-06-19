@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:51 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/19 13:54:38 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/20 01:33:21 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,14 @@ long	div_more_cases(long size)
 		return (85);
 	else if (size == 100)
 		return (40);
-	else
-		return (0);
+	else if(size == 4 || size == 5)
+		return (2);
+	else if(size >= 6 && size <= 15)
+		return (3);
+	else if(size > 15 && size <= 50)
+		return (5);
+	else 
+		return (10);
 }
 
 int	main(int argc, char **argv)
@@ -62,12 +68,10 @@ int	main(int argc, char **argv)
 		tower.log = sort_two_numbers(tower.stk_a);
 	else if (tower.size == 3)
 		tower.log = sort_three_numbers(tower.stk_a);
-	else if (tower.size == 5)
+	else if (tower.size == 6)
 		tower = sort_five_numbers(tower);
-	else if (tower.size == 100 || tower.size == 500)
-		tower = c_sort(tower);
 	else
-		tower = bubble_sort(tower);
+		tower = c_sort(tower);
 	display_log(tower.log);
 	free_stuff(&tower);
 	return (0);

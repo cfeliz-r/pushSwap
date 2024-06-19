@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:45:40 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/19 21:25:51 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/20 01:30:50 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void		append_log(char **log, char *action);
 void		display_log(char *log);
 char		*sort_two_numbers(long *list);
 char		*sort_three_numbers(long *list);
-t_towers	bubble_sort(t_towers towers);
 t_towers	sort_five_numbers(t_towers towers);
 void		shift_up(long **list, long size);
 void		shift_down(long **list, long size);

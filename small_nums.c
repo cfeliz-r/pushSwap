@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:25:47 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/19 13:51:05 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/20 01:30:42 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,32 +102,5 @@ t_towers	sort_five_numbers(t_towers tower)
 		append_log(&tower.log, "ra");
 	if (i == tower.corr[3])
 		append_log(&tower.log, "ra");
-	return (tower);
-}
-
-t_towers	bubble_sort(t_towers tower)
-{
-	long		len;
-	long		loc;
-
-	len = tower.size;
-	while (len)
-	{
-		loc = tower.size;
-		while (loc - 1)
-		{
-			if (tower.stk_a[0] > tower.stk_a[1])
-			{
-				swap_top_two(&tower.stk_a, tower.size);
-				append_log(&tower.log, "sa");
-			}
-			rotate_up(&tower.stk_a, tower.size);
-			append_log(&tower.log, "ra");
-			loc--;
-		}
-		rotate_up(&tower.stk_a, tower.size);
-		append_log(&tower.log, "ra");
-		len--;
-	}
 	return (tower);
 }
