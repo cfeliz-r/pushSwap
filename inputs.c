@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:26:07 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/19 14:17:05 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/20 00:27:57 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static long	count_and_checkbs(char *str, long n)
 	{
 		while (str[i] == ' ')
 			i++;
-		if (str[i] == '-' || str[i] == '+')
+		if (str[i] == '-')
 			i++;
 		if (ft_isdigit(str[i]))
 		{
@@ -72,16 +72,16 @@ static t_towers	char_to_long(t_towers tower, char *str, long index)
 	{
 		n = 0;
 		neg = 0;
-		while ((str[i] == ' ' || str[i] == '+' || str[i] == '-') && str[i])
+		while ((str[i] == ' ' || str[i] == '-') && str[i])
 			i++;
 		if (str[i - 1] == '-')
 			neg = 1;
-		if (!str[i])
-			break ;
+		if (str[i] == ' ' || !str[i])
+			print_error(str, NULL);
 		while (ft_isdigit(str[i]))
 		{
 			n = n * 10 + str[i++] - '0';
-			if (n >= (long)2147483648)
+			if (n > INT_MAX)
 				print_error(str, NULL);
 		}
 		tower.stk_a[index++] = n * ((neg * -2) + 1);

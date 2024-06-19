@@ -6,7 +6,7 @@
 /*   By: cfeliz-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:45:40 by cfeliz-r          #+#    #+#             */
-/*   Updated: 2024/06/19 14:19:00 by cfeliz-r         ###   ########.fr       */
+/*   Updated: 2024/06/19 21:25:51 by cfeliz-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# define REF	2147483648
+# define REF	21474836488
 
 typedef struct s_towers
 {
